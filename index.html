@@ -12,6 +12,9 @@
     <nav class="navbar">
         <div class="nav-content">
             <div class="logo">UF</div>
+            <button class="mobile-nav-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -27,32 +30,17 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Umar Faizan</h1>
-            <h2>AI/ML Enthusiast</h2>
-            <p>Passionate about Artificial Intelligence, Machine Learning, and Deep Learning</p>
-            <div class="hero-buttons">
-                <a href="#contact" class="btn primary">Contact Me</a>
-                <a href="#projects" class="btn secondary">View Projects</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="profile-section">
-                    <div class="profile-image">
-                        <img src="public/profile_pick.png" alt="Umar Faizan">
-                    </div>
-                    <div class="about-text">
-                        <p>Enthusiastic and motivated Bachelor of Science in Artificial Intelligence (BSAI) student at NUML, Islamabad. Passionate about Artificial Intelligence, Machine Learning, and Deep Learning with hands-on experience in building AI models.</p>
-                        <div class="contact-info">
-                            <p><i class="fas fa-map-marker-alt"></i> Islamabad, Pakistan</p>
-                            <a href="mailto:mianumarzareen@gmail.com" class="contact-link"><i class="fas fa-envelope"></i> mianumarzareen@gmail.com</a>
-                            <a href="tel:+923027240568" class="contact-link"><i class="fas fa-phone"></i> +92 302 7240568</a>
-                        </div>
+            <div class="hero-grid">
+                <div class="profile-image">
+                    <img src="public/profile_pick.png" alt="Umar Faizan">
+                </div>
+                <div class="hero-text">
+                    <h1>Umar Faizan</h1>
+                    <h2>AI/ML Enthusiast</h2>
+                    <p>Enthusiastic and motivated Bachelor of Science in Artificial Intelligence (BSAI) student at NUML, Islamabad. Passionate about Artificial Intelligence, Machine Learning, and Deep Learning with hands-on experience in building AI models.</p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn primary">Contact Me</a>
+                        <a href="#projects" class="btn secondary">View Projects</a>
                     </div>
                 </div>
             </div>
@@ -186,7 +174,8 @@
             <div class="certifications-grid">
                 <div class="certification-card">
                     <h3>IBM AI Developer Professional Certificate</h3>
-                    <a href="https://www.coursera.org/account/accomplishments/professional-cert/57S8YUYUDP2V" target="_blank" class="cert-link">View Certificate</a>
+                    <p class="cert-provider">by IBM</p>
+                    <a href="https://www.coursera.org/account/accomplishments/professional-cert/57S8YUYUDP2V" target="_blank" rel="noopener noreferrer" class="cert-link">View Certificate</a>
                     <div class="courses-list">
                         <h4>Courses Completed:</h4>
                         <ul>
@@ -203,7 +192,7 @@
                 <div class="certification-card">
                     <h3>Machine Learning Specialization</h3>
                     <p class="cert-provider">by Stanford University and DeepLearning.AI</p>
-                    <a href="https://www.coursera.org/account/accomplishments/specialization/ZA6LABB8CLB7" target="_blank" class="cert-link">View Certificate</a>
+                    <a href="https://www.coursera.org/account/accomplishments/specialization/ZA6LABB8CLB7" target="_blank" rel="noopener noreferrer" class="cert-link">View Certificate</a>
                     <div class="courses-list">
                         <h4>Courses Completed:</h4>
                         <ul>
@@ -217,14 +206,14 @@
                 <div class="certification-card">
                     <h3>Deep Learning Specialization</h3>
                     <p class="cert-provider">by DeepLearning.AI</p>
-                    <a href="https://coursera.org/share/3e84cbbfe6202fd66a35752f8a36699c" target="_blank" class="cert-link">View Certificate</a>
+                    <a href="https://coursera.org/share/3e84cbbfe6202fd66a35752f8a36699c" target="_blank" rel="noopener noreferrer" class="cert-link">View Certificate</a>
                     <div class="courses-list">
                         <h4>Courses Completed:</h4>
                         <ul>
                             <li>Structuring Machine Learning Projects</li>
                             <li>Neural Networks and Deep Learning</li>
                             <li>Convolutional Neural Networks</li>
-                            <li>Improving Deep Neural Networks: Hyperparameter Tuning, Regularization and Optimization</li>
+                            <li>Improving Deep Neural Networks</li>
                             <li>Sequence Models</li>
                         </ul>
                     </div>
@@ -233,7 +222,7 @@
                 <div class="certification-card">
                     <h3>Google Soft Skills Program</h3>
                     <p class="cert-provider">by Google through Pakistan Freelancers Association (PAFLA)</p>
-                    <a href="https://assets.pafla.org.pk/quiz-certificates/google-soft-skills-program-5346-7355922762992523-1717043426.pdf" target="_blank" class="cert-link">View Certificate</a>
+                    <a href="https://assets.pafla.org.pk/quiz-certificates/google-soft-skills-program-5346-7355922762992523-1717043426.pdf" target="_blank" rel="noopener noreferrer" class="cert-link">View Certificate</a>
                 </div>
             </div>
         </div>
@@ -244,18 +233,27 @@
         <div class="container">
             <h2 class="section-title">Get in Touch</h2>
             <div class="contact-content">
-                <div class="social-links">
-                    <a href="https://linkedin.com/in/u-faizan" target="_blank" class="social-link">
-                        <i class="fab fa-linkedin"></i>
+                <div class="contact-info">
+                    <a href="mailto:mianumarzareen@gmail.com" class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        mianumarzareen@gmail.com
                     </a>
-                    <a href="https://github.com/u-faizan" target="_blank" class="social-link">
-                        <i class="fab fa-github"></i>
+                    <a href="tel:+923027240568" class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        +92 302 7240568
+                    </a>
+                    <a href="https://maps.google.com/?q=Islamabad,Pakistan" target="_blank" rel="noopener noreferrer" class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Islamabad, Pakistan
                     </a>
                 </div>
-                <div class="contact-info">
-                    <p><i class="fas fa-envelope"></i> mianumarzareen@gmail.com</p>
-                    <p><i class="fas fa-phone"></i> +92 302 7240568</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Islamabad, Pakistan</p>
+                <div class="social-links">
+                    <a href="https://linkedin.com/in/u-faizan" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/u-faizan" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <i class="fab fa-github"></i>
+                    </a>
                 </div>
             </div>
         </div>

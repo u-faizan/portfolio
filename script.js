@@ -1,3 +1,24 @@
+// Mobile Navigation
+const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+mobileNavToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    const icon = mobileNavToggle.querySelector('i');
+    icon.classList.toggle('fa-bars');
+    icon.classList.toggle('fa-times');
+});
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav-content') && navLinks.classList.contains('active')) {
+        navLinks.classList.remove('active');
+        const icon = mobileNavToggle.querySelector('i');
+        icon.classList.add('fa-bars');
+        icon.classList.remove('fa-times');
+    }
+});
+
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -8,6 +29,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 behavior: 'smooth',
                 block: 'start'
             });
+            // Close mobile menu if open
+            if (navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                const icon = mobileNavToggle.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            }
         }
     });
 });
@@ -16,81 +44,78 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 const navbar = document.querySelector('.navbar');
 window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-        navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+        navbar.style.backgroundColor = 'rgba(17, 34, 64, 0.98)';
+        navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.3)';
     } else {
-        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+        navbar.style.backgroundColor = 'rgba(17, 34, 64, 0.95)';
         navbar.style.boxShadow = 'none';
     }
 });
 
-// Intersection Observer for fade-in animations
+// Add animation on scroll
 const observerOptions = {
-    root: null,
-    rootMargin: '0px',
     threshold: 0.1
 };
 
-const observer = new IntersectionObserver((entries, observer) => {
+const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+            entry.target.classList.add('animate');
             observer.unobserve(entry.target);
         }
     });
 }, observerOptions);
 
-// Observe all sections
-document.querySelectorAll('section').forEach(section => {
-    section.style.opacity = '0';
-    section.style.transform = 'translateY(20px)';
-    section.style.transition = 'all 0.6s ease-out';
-    observer.observe(section);
+// Observe elements with animation classes
+document.querySelectorAll('.profile-section, .skill-category, .project-card, .certification-card').forEach(el => {
+    observer.observe(el);
 });
+
+// Particle animation in hero section
+function createParticle() {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    particle.style.left = Math.random() * 100 + 'vw';
+    particle.style.animationDuration = Math.random() * 3 + 2 + 's';
+    particle.style.opacity = Math.random() * 0.5 + 0.2;
+    return particle;
+}
+
+function setupParticles() {
+    const hero = document.querySelector('.hero');
+    const particleContainer = document.createElement('div');
+    particleContainer.className = 'particle-container';
+    hero.appendChild(particleContainer);
+
+    for (let i = 0; i < 50; i++) {
+        particleContainer.appendChild(createParticle());
+    }
+}
+
+// Initialize particles
+setupParticles();
 
 // Add active class to navigation links on scroll
 const sections = document.querySelectorAll('section');
-const navLinks = document.querySelectorAll('.nav-links a');
+const navItems = document.querySelectorAll('.nav-links a');
 
 window.addEventListener('scroll', () => {
     let current = '';
-    
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
-        if (window.scrollY >= sectionTop - 60) {
+        if (window.pageYOffset >= sectionTop - sectionHeight / 3) {
             current = section.getAttribute('id');
         }
     });
 
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href').slice(1) === current) {
-            link.classList.add('active');
+    navItems.forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('href').slice(1) === current) {
+            item.classList.add('active');
         }
     });
 });
-
-// Mobile menu toggle (if needed in the future)
-const createMobileMenu = () => {
-    const nav = document.querySelector('.nav-content');
-    const menuButton = document.createElement('button');
-    menuButton.classList.add('mobile-menu-btn');
-    menuButton.innerHTML = '<i class="fas fa-bars"></i>';
-    
-    nav.appendChild(menuButton);
-    
-    menuButton.addEventListener('click', () => {
-        const navLinks = document.querySelector('.nav-links');
-        navLinks.classList.toggle('show');
-    });
-};
-
-// Initialize mobile menu if screen width is small
-if (window.innerWidth <= 768) {
-    createMobileMenu();
-}
 
 // Add hover effect to project cards
 document.querySelectorAll('.project-card').forEach(card => {
